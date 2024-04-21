@@ -1,25 +1,34 @@
 table, th, td {
-    border: 2px solid;
     text-align: center;
+    font-size: large;
+    border-collapse: collapse;
+    border-bottom: 1px solid #561212;
+    padding: 5px;
+}
+
+tr:hover {
+    background-color: rgb(144, 200, 163);
+}
+
+tr.selected {
+    background-color: rgb(144, 200, 163);
 }
 
 .numbers {
-    width: 120px;
-    text-align: center;
+    width: 100px;
 }
 
 .email {
-    width: 250px;
+    width: 230px;
 }
 
 .text {
-    width: 150px;
+    width: 130px;
 }
 
 .searchBox {
-    width: 50px;
-    display: inline-block;
     margin: 10px;
+    display: inline-block;
 }
 
 label {

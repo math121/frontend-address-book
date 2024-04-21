@@ -25,7 +25,16 @@ function fillRow(address) {
     const cell = document.createElement("td");
     cell.textContent = address[key];
     row.appendChild(cell);
+    row.onclick = () => highlightRow(row);
   }
 
   return row;
+}
+
+function highlightRow(row) {
+    const previousSelected = document.querySelector("tr.selected");
+    if (previousSelected) {
+        previousSelected.classList.remove("selected");
+    } 
+    row.classList.add("selected");
 }
