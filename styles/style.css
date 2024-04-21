@@ -1,0 +1,31 @@
+table, th, td {
+    border: 2px solid;
+    text-align: center;
+}
+
+.numbers {
+    width: 120px;
+    text-align: center;
+}
+
+.email {
+    width: 250px;
+}
+
+.text {
+    width: 150px;
+}
+
+.searchBox {
+    width: 50px;
+    display: inline-block;
+    margin: 10px;
+}
+
+label {
+    margin: 10px;
+}
+
+input {
+    margin: 10px;
+}
