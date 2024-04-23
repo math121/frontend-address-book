@@ -1,3 +1,7 @@
+let add = false;
+let edit = false;
+let selectedAddressID = null;
+
 document.addEventListener("DOMContentLoaded", async () => {
   fetchAddressBook();
 });
@@ -32,9 +36,114 @@ function fillRow(address) {
 }
 
 function highlightRow(row) {
-    const previousSelected = document.querySelector("tr.selected");
-    if (previousSelected) {
-        previousSelected.classList.remove("selected");
-    } 
-    row.classList.add("selected");
+  const previousSelected = document.querySelector("tr.selected");
+  if (previousSelected) {
+    previousSelected.classList.remove("selected");
+  }
+  row.classList.add("selected");
 }
+
+function closeFormBox() {
+  const form_box =document.getElementById("form-box");
+  form_box.style.display = "none";
+}
+
+const showAddForm = () => {
+  const form_box =document.getElementById("form-box");
+  form_box.style.display = "block";
+  add = true;
+}
+
+const showEditForm = () => {
+  const selectedAddress = document.querySelector("tr.selected");
+  const idNum = selectedAddress.getElementsByTagName("td")[0].textContent;
+
+  const form = document.querySelector("form");
+  form.id.value = idNum;
+  form.fName.value = selectedAddress.getElementsByTagName("td")[1].textContent;
+  form.lName.value = selectedAddress.getElementsByTagName("td")[2].textContent;
+  form.company.value = selectedAddress.getElementsByTagName("td")[3].textContent;
+  form.street.value = selectedAddress.getElementsByTagName("td")[4].textContent;
+  form.tlf.value = selectedAddress.getElementsByTagName("td")[5].textContent;
+  form.email.value = selectedAddress.getElementsByTagName("td")[6].textContent;
+  form.mobile.value = selectedAddress.getElementsByTagName("td")[7].textContent;
+  form.fax.value = selectedAddress.getElementsByTagName("td")[8].textContent;
+
+  const form_box =document.getElementById("form-box");
+  form_box.style.display = "block";
+  edit = true;
+  selectedAddressID = idNum;
+}
+
+const getFormData = (data) => {
+  const formData = {
+    id: data.id.value,
+    firstName: data.fName.value,
+    lastName: data.lName.value,
+    companyName: data.company.value,
+    street: data.street.value,
+    tlf: data.tlf.value,
+    email: data.email.value,
+    mobile: data.mobile.value,
+    fax: data.fax.value,
+  }
+
+  return formData;
+
+}
+
+
+const addAddress = (data) => {
+  const formData = getFormData(data);
+
+  fetch("http://localhost:8080/address-book", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+    body: JSON.stringify(formData)
+    
+  })
+    .then((response) => console.log(response.json()))
+    .catch((error) => console.log(error));
+};
+
+
+const editAddress = (data, idNum) => {
+  const formData = getFormData(data);
+
+  fetch("http://localhost:8080/address-book/" + idNum, {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+    body: JSON.stringify(formData)
+  })
+    .then((response) => console.log(response.json()))
+    .catch((error) => console.log(error));
+};
+
+const handleSubmit = (data) => {
+  if (add) {
+    addAddress(data);
+    add = false;
+    return;
+  }
+
+  if (edit) {
+    editAddress(data, selectedAddressID);
+    edit = false;
+    return;
+  }
+
+}
+
+const deleteAddress = () => {
+  const selectedAddress = document.querySelector("tr.selected");
+  const id = selectedAddress.getElementsByTagName("td")[0].textContent;
+  fetch("http://localhost:8080/address-book/" + id, {
+    method: "DELETE",
+  })
+    .then(location.reload())
+    .catch((error) => console.log(error));
+};

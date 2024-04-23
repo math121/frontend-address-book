@@ -16,16 +16,55 @@
         <input type="text">
     </div>
 -->
-<!--
-    <button>Add</button>
-    <button>Edit</button>
-    <button>Delete</button>
--->
+    <div id="form-box">
+      <div class="form-content">
+        <div class="form-header">
+          <span class="close" onclick="closeFormBox()">&times;</span>
+          <h2>Create new address:</h2>
+        </div>
+        <form class="fillForm" onsubmit="handleSubmit(this)">
+          <label class="item" for="id">ID: </label>
+          <input class="item" type="number" id="id">
+
+          <label class="item" for="fName">First Name: </label>
+          <input class="item" type="text" id="fName">
+
+          <label class="item" for="lName">Last Name: </label>
+          <input class="item" type="text" id="lName">
+
+          <label class="item" for="company">Company: </label>
+          <input class="item" type="text" id="company">
+
+          <label class="item" for="street">Street: </label>
+          <input class="item" type="text" id="street">
+
+          <label class="item" for="tlf">Tlf.: </label>
+          <input class="item" type="number" id="tlf">
+
+          <label class="item" for="email">E-mail: </label>
+          <input class="item" type="text" id="email">
+
+          <label class="item" for="mobile">Mobile: </label>
+          <input class="item" type="number" id="mobile">
+
+          <label class="item" for="fax">Fax: </label>
+          <input class="item" type="number" id="fax">
+          
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <h3>Click on one of the addresses to edit/delete</h3>
+    <button class="button-left" onclick="showAddForm()">Add</button>
+    <button class="button-right" onclick="deleteAddress()">Delete</button>
+    <button class="button-right" onclick="showEditForm()">Edit</button>
+
     <table>
       <tr class="titleRow">
         <th class="numbers">ID</th>
-        <th class="text">Firstname</th>
-        <th class="text">Lastname</th>
+        <th class="text">First Name</th>
+        <th class="text">Last Name</th>
         <th class="text">Company</th>
         <th class="text">Street</th>
         <th class="numbers">Tlf.</th>
