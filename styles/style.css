@@ -1,6 +1,8 @@
-table,
-th,
-td {
+body {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+table,th,td {
   text-align: center;
   font-size: large;
   border-collapse: collapse;
@@ -68,9 +70,10 @@ button {
 .form-content {
   padding: 10px;
   position: fixed;
-  top: 20%;
+  top: 10%;
+  left: 30%;
   background-color: #fefefe;
-  width: 30%;
+  width: 40%;
 }
 
 .form-header {
