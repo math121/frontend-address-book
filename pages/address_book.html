@@ -8,14 +8,17 @@
     <script src="../logic/functions.js"></script>
   </head>
   <body>
- <!--<p>Type in to search</p>
+    <h1>Address Book</h1>
+    <p>Type in to search</p>
     <div class="searchBox">
-        <label>Name</label>
-        <input type="text">
-        <label>Street</label>
-        <input type="text">
+      <label class="searchContent" for="searchName">Name: </label>
+      <input class="searchContent" type="text" id="searchName" />
+      <label class="searchContent" for="searchStreet">Street: </label>
+      <input class="searchContent" type="text" id="searchStreet" />
     </div>
--->
+    <button onclick="search()">Search</button>
+
+
     <div id="form-box">
       <div class="form-content">
         <div class="form-header">
@@ -24,32 +27,32 @@
         </div>
         <form class="fillForm" onsubmit="handleSubmit(this)">
           <label class="item" for="id">ID: </label>
-          <input class="item" type="number" id="id">
+          <input class="item" type="number" id="id" />
 
           <label class="item" for="fName">First Name: </label>
-          <input class="item" type="text" id="fName">
+          <input class="item" type="text" id="fName" />
 
           <label class="item" for="lName">Last Name: </label>
-          <input class="item" type="text" id="lName">
+          <input class="item" type="text" id="lName" />
 
           <label class="item" for="company">Company: </label>
-          <input class="item" type="text" id="company">
+          <input class="item" type="text" id="company" />
 
           <label class="item" for="street">Street: </label>
-          <input class="item" type="text" id="street">
+          <input class="item" type="text" id="street" />
 
           <label class="item" for="tlf">Tlf.: </label>
-          <input class="item" type="number" id="tlf">
+          <input class="item" type="number" id="tlf" />
 
           <label class="item" for="email">E-mail: </label>
-          <input class="item" type="text" id="email">
+          <input class="item" type="text" id="email" />
 
           <label class="item" for="mobile">Mobile: </label>
-          <input class="item" type="number" id="mobile">
+          <input class="item" type="number" id="mobile" />
 
           <label class="item" for="fax">Fax: </label>
-          <input class="item" type="number" id="fax">
-          
+          <input class="item" type="number" id="fax" />
+
           <button type="submit">Submit</button>
         </form>
       </div>

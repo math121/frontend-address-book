@@ -33,9 +33,16 @@ tr.selected {
 }
 
 .searchBox {
-  margin: 10px;
-  display: inline-block;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: start;
 }
+
+.searchContent {
+  text-align: right;
+  margin-right: 10px;
+}
+
 
 button {
   padding: 10px;
@@ -66,7 +73,7 @@ button {
   width: 30%;
 }
 
-.form-header, .form-footer {
+.form-header {
   padding: 2px 16px;
   background-color: #38198d;
   color: white;
@@ -83,7 +90,6 @@ button {
   padding: 5px;
   margin: 7px;
   font-size: 17px;
-  border: 2px solid;
 }
 
 input {

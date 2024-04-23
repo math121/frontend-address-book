@@ -147,3 +147,26 @@ const deleteAddress = () => {
     .then(location.reload())
     .catch((error) => console.log(error));
 };
+
+const search = () => {
+  const name = document.getElementById("searchName").value;
+  const street = document.getElementById("searchStreet").value;
+
+  fetch(`http://localhost:8080/address-book/search?name=${name}&street=${street}`)
+    .then((response) => response.json())
+    .then((data) => showFilteredData(data))
+    .catch((error) => console.log(error));
+}
+
+const showFilteredData = (data) => {
+  const table = document.getElementsByTagName("table");
+  const filteredRows = [];
+
+  filteredRows.push(table[0].childNodes[0])
+  filteredRows.push(table[0].childNodes[1])
+  data.forEach(address => {
+    filteredRows.push(fillRow(address));
+  });
+
+  table[0].replaceChildren(...filteredRows);
+}
